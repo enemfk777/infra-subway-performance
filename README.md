@@ -43,6 +43,33 @@ npm run dev
 
 ### 1단계 - 화면 응답 개선하기
 1. 성능 개선 결과를 공유해주세요 (Smoke, Load, Stress 테스트 결과)
+- [x] 대상 시스템 범위
+    * 접속빈도 높은 페이지 : 메인 페이지
+    * 데이터를 갱신하는 페이지 : 회원 가입
+    * 데이터를 조회하는데 여러 데이터를 참조하는 페이지 : 경로 검색
+- [x] 목푯값 설정 (latency, throughput, 부하 유지기간)
+    * DAU : 10만 상정 (카카오 지하철 2017 DAU 1/4 수준)
+    * 1명당 1일 평균 접속 수 : 3
+    * 피크 시간대 집중률(최대 트래픽 / 평소 트래픽) : 10
+    * 1일 총 접속수 (DAU * 1명당 1일 평균 접속 수) : 300,000
+    * 1일 평균 rps (1일 총 접속수 / 86,400) = 3.47
+    * 1일 최대 rps (1일 평균 rps * 피크 시간대 집중률) = 34.7
+- [x] 부하 테스트 시 저장될 데이터 건수 및 크기
+    * 준비 된 운영 DB 데이터
+- [x] 각 시나리오에 맞춰 스크립트 작성
+    - [x] 접속 빈도가 높은 페이지
+        * docs/test/main/main-smoke.js
+        * docs/test/main/main-load.js
+        * docs/test/main/main-stress.js
+    - [x] 데이터를 갱신하는 페이지
+        * docs/test/sign/sign-smoke.js
+        * docs/test/sign/sign-load.js
+        * docs/test/sign/sign-stress.js
+    - [x] 데이터를 조회하는데 여러 데이터를 참조하는 페이지
+        * docs/test/path/path-smoke.js
+        * docs/test/path/path-load.js
+        * docs/test/path/path-stress.js
+
 
 2. 어떤 부분을 개선해보셨나요? 과정을 설명해주세요
 
